@@ -18,7 +18,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -41,11 +41,11 @@ jobs:
         run: git status
       - name: stage changed files
         run: git add .
-      - name: commit changed files
-        run: git commit -m "Automatic code formating"
-      - name: fetch from master
-        run: git fetch origin master
-      - name: push code to master
-        run: git push origin HEAD:master
+      - name: commit & push changed files
+        run: |
+          git config --global user.name 'Juan Francisco Garía'
+          git config --global user.email 'juanfgarcia@users.noreply.github.com'
+          git commit -am "Automated code formatting"
+          git push
           
           
