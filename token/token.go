@@ -11,17 +11,66 @@ const (
 	ILLEGAL = iota
 	EOF
 
-	ASSIGN
-
-	SEMICOLON
-
+	// Identifiers
 	IDENTIFIER
 	INT
+
+	// Operators
+	ASSIGN
+	EQUALS
+	PLUS
+	MINUS
+	ASTERISK
+	RIGHTARROW
+	SLASH
+	 
+	// Delimiters
+	COMMA
+	COLON
+	SEMICOLON
+
+	LPAREN
+	RPAREN
+	LBRACE
+	RBRACE
+
+	// Keywords
+	TYPE
 	LET
+	FUNCTION
+	RETURN
 )
+
+func (t TokenType) String() string{
+     return [...]string{
+	"ILLEGAL",
+	"EOF",
+	"IDENTIFIER",
+	"INT",
+	"ASSIGN",
+	"EQUALS",
+	"PLUS",
+	"MINUS",
+	"ASTERISK",
+	"RIGHTARROW",
+	"SLASH",
+	"COMMA",
+	"COLON",
+	"SEMICOLON",
+	"LPAREN",
+	"RPAREN",
+	"LBRACE",
+	"RBRACE",
+	"LET",
+	"FUNCTION",
+	"RETURN"}[t]
+}
 
 var keywords = map[string]TokenType{
 	"let": LET,
+	"fn": FUNCTION,
+	"return": RETURN,
+	"Int" : TYPE,
 }
 
 func LookupIdent(ident string) TokenType {
