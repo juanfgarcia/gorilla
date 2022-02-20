@@ -23,7 +23,7 @@ const (
 	ASTERISK
 	RIGHTARROW
 	SLASH
-	 
+
 	// Delimiters
 	COMMA
 	COLON
@@ -41,36 +41,36 @@ const (
 	RETURN
 )
 
-func (t TokenType) String() string{
-     return [...]string{
-	"ILLEGAL",
-	"EOF",
-	"IDENTIFIER",
-	"INT",
-	"ASSIGN",
-	"EQUALS",
-	"PLUS",
-	"MINUS",
-	"ASTERISK",
-	"RIGHTARROW",
-	"SLASH",
-	"COMMA",
-	"COLON",
-	"SEMICOLON",
-	"LPAREN",
-	"RPAREN",
-	"LBRACE",
-	"RBRACE",
-	"LET",
-	"FUNCTION",
-	"RETURN"}[t]
+func (t TokenType) String() string {
+	return [...]string{
+		"ILLEGAL",
+		"EOF",
+		"IDENTIFIER",
+		"INT",
+		"ASSIGN",
+		"EQUALS",
+		"PLUS",
+		"MINUS",
+		"ASTERISK",
+		"RIGHTARROW",
+		"SLASH",
+		"COMMA",
+		"COLON",
+		"SEMICOLON",
+		"LPAREN",
+		"RPAREN",
+		"LBRACE",
+		"RBRACE",
+		"LET",
+		"FUNCTION",
+		"RETURN"}[t]
 }
 
 var keywords = map[string]TokenType{
-	"let": LET,
-	"fn": FUNCTION,
+	"let":    LET,
+	"fn":     FUNCTION,
 	"return": RETURN,
-	"Int" : TYPE,
+	"Int":    TYPE,
 }
 
 func LookupIdent(ident string) TokenType {

@@ -84,41 +84,47 @@ func startState(lex *Lexer) LexState {
 	ch := lex.read()
 
 	switch ch {
-	case 0 : {
-	     lex.emit(token.EOF)
-	     return nil
-	}
-	case '(':
-	     lex.emit(token.LPAREN)
-	case ')':
-	     lex.emit(token.RPAREN)
-	case '{':
-	     lex.emit(token.LBRACE)
-	case '}':
-	     lex.emit(token.RBRACE)
-	case ',':
-	     lex.emit(token.COMMA)
-	case ';':
-	     lex.emit(token.SEMICOLON)
-	case ':' : {
-		    if lex.peek() == '=' {
-		       lex.read()
-			lex.emit(token.ASSIGN)
-		    } else {
-			lex.emit(token.COLON)
-		    }
+	case 0:
+		{
+			lex.emit(token.EOF)
+			return nil
 		}
-	case '-': {
-	     if lex.peek() == '>' {
-	     	lex.read()
-		lex.emit(token.RIGHTARROW)
-	    } else {
-	      lex.emit(token.MINUS)
-	    }
-	}
-	case '+': lex.emit(token.PLUS)
-	case '/': lex.emit(token.SLASH)
-	case '*': lex.emit(token.ASTERISK)
+	case '(':
+		lex.emit(token.LPAREN)
+	case ')':
+		lex.emit(token.RPAREN)
+	case '{':
+		lex.emit(token.LBRACE)
+	case '}':
+		lex.emit(token.RBRACE)
+	case ',':
+		lex.emit(token.COMMA)
+	case ';':
+		lex.emit(token.SEMICOLON)
+	case ':':
+		{
+			if lex.peek() == '=' {
+				lex.read()
+				lex.emit(token.ASSIGN)
+			} else {
+				lex.emit(token.COLON)
+			}
+		}
+	case '-':
+		{
+			if lex.peek() == '>' {
+				lex.read()
+				lex.emit(token.RIGHTARROW)
+			} else {
+				lex.emit(token.MINUS)
+			}
+		}
+	case '+':
+		lex.emit(token.PLUS)
+	case '/':
+		lex.emit(token.SLASH)
+	case '*':
+		lex.emit(token.ASTERISK)
 	default:
 		{
 			if isLetter(ch) {
