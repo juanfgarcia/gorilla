@@ -35,6 +35,16 @@ jobs:
         with:
           gofmt-path: './token'
           gofmt-flags: '-w'
+      - name: Check code formatting for ast
+        uses: Jerome1337/gofmt-action@v1.0.4
+        with:
+          gofmt-path: './ast'
+          gofmt-flags: '-w'
+      - name: Check code formatting for parser
+        uses: Jerome1337/gofmt-action@v1.0.4
+        with:
+          gofmt-path: './parser'
+          gofmt-flags: '-w'
       - name: check for changes
         run: git status
       - name: stage changed files
