@@ -15,7 +15,6 @@ type Lexer struct {
 // the function lexes a token and return the next LexState.
 type LexState func(*Lexer) LexState
 
-
 func New(input string) *Lexer {
 	lex := &Lexer{
 		input:    input,
@@ -30,7 +29,7 @@ func New(input string) *Lexer {
 // next returns the next char in the input
 func (lex *Lexer) read() byte {
 	if lex.position >= len(lex.input) {
-        return 0
+		return 0
 	}
 	ch := lex.input[lex.position]
 	lex.position++
@@ -70,11 +69,11 @@ func (lex *Lexer) run() {
 }
 
 func (lex *Lexer) ignoreWhiteSpaces() {
-    if lex.position >= len(lex.input) {
-        return
+	if lex.position >= len(lex.input) {
+		return
 	}
 
-	for ch := lex.read(); isSpace(ch) ;{
+	for ch := lex.read(); isSpace(ch); {
 		ch = lex.read()
 	}
 	lex.backup()
@@ -86,7 +85,6 @@ func startState(lex *Lexer) LexState {
 	lex.ignoreWhiteSpaces()
 
 	ch := lex.read()
-
 
 	switch ch {
 	case 0:
@@ -105,20 +103,21 @@ func startState(lex *Lexer) LexState {
 	case ',':
 		lex.emit(token.COMMA)
 	case ';':
-	     lex.emit(token.SEMICOLON)
-    case '=' : 
-         lex.emit(token.ASSIGN)
-	case ':' : {
-		    if lex.peek() == '=' {
-		       lex.read()
-			lex.emit(token.ASSIGN)
-		    } else {
-			lex.emit(token.COLON)
-		    }
-        }
+		lex.emit(token.SEMICOLON)
+	case '=':
+		lex.emit(token.ASSIGN)
+	case ':':
+		{
+			if lex.peek() == '=' {
+				lex.read()
+				lex.emit(token.ASSIGN)
+			} else {
+				lex.emit(token.COLON)
+			}
+		}
 	case '-':
 		{
-		if lex.peek() == '>' {
+			if lex.peek() == '>' {
 				lex.read()
 				lex.emit(token.RIGHTARROW)
 			} else {

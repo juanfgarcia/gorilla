@@ -1,6 +1,5 @@
 package token
 
-
 type TokenType int
 
 type Token struct {
@@ -42,30 +41,30 @@ const (
 	RETURN
 )
 
-func (t TokenType) String() string{
-     return [...]string{
-	"ILLEGAL",
-	"EOF",
-	"IDENTIFIER",
-	"INT",
-	"ASSIGN",
-	"EQUALS",
-	"PLUS",
-	"MINUS",
-	"ASTERISK",
-	"RIGHTARROW",
-	"SLASH",
-	"COMMA",
-	"COLON",
-	"SEMICOLON",
-	"LPAREN",
-	"RPAREN",
-	"LBRACE",
-	"RBRACE",
-    "TYPE",
-	"LET",
-	"FUNCTION",
-	"RETURN"}[t]
+func (t TokenType) String() string {
+	return [...]string{
+		"ILLEGAL",
+		"EOF",
+		"IDENTIFIER",
+		"INT",
+		"ASSIGN",
+		"EQUALS",
+		"PLUS",
+		"MINUS",
+		"ASTERISK",
+		"RIGHTARROW",
+		"SLASH",
+		"COMMA",
+		"COLON",
+		"SEMICOLON",
+		"LPAREN",
+		"RPAREN",
+		"LBRACE",
+		"RBRACE",
+		"TYPE",
+		"LET",
+		"FUNCTION",
+		"RETURN"}[t]
 }
 
 var keywords = map[string]TokenType{

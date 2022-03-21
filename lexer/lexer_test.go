@@ -39,7 +39,7 @@ func TestLexer(t *testing.T) {
 			{token.ASSIGN, ":="},
 			{token.INT, "3"},
 			{token.SEMICOLON, ";"},
-            {token.EOF, ""},
+			{token.EOF, ""},
 		}
 
 		LexAssert(t, input, tests)
@@ -71,8 +71,8 @@ func TestLexer(t *testing.T) {
 			{token.PLUS, "+"},
 			{token.IDENTIFIER, "y"},
 			{token.SEMICOLON, ";"},
-            {token.RBRACE, "}"},
-            {token.EOF, ""},
+			{token.RBRACE, "}"},
+			{token.EOF, ""},
 		}
 
 		LexAssert(t, input, tests)
@@ -82,17 +82,17 @@ func TestLexer(t *testing.T) {
 	t.Run("Arithmetic expressions", func(t *testing.T) {
 		input := `2+3/5*4-;`
 
-		want := []tokenTest {
-		     {token.INT, "2"},
-		     {token.PLUS, "+"},
-		     {token.INT, "3"},
-		     {token.SLASH, "/"},
-		     {token.INT, "5"},
-		     {token.ASTERISK, "*"},
-		     {token.INT, "4"},
-		     {token.MINUS, "-"},
-             {token.SEMICOLON, ";"},
-             {token.EOF, ""},
+		want := []tokenTest{
+			{token.INT, "2"},
+			{token.PLUS, "+"},
+			{token.INT, "3"},
+			{token.SLASH, "/"},
+			{token.INT, "5"},
+			{token.ASTERISK, "*"},
+			{token.INT, "4"},
+			{token.MINUS, "-"},
+			{token.SEMICOLON, ";"},
+			{token.EOF, ""},
 		}
 
 		LexAssert(t, input, want)
