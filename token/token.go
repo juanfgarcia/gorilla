@@ -1,5 +1,6 @@
 package token
 
+
 type TokenType int
 
 type Token struct {
@@ -61,6 +62,7 @@ func (t TokenType) String() string{
 	"RPAREN",
 	"LBRACE",
 	"RBRACE",
+    "TYPE",
 	"LET",
 	"FUNCTION",
 	"RETURN"}[t]

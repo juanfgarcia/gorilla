@@ -39,6 +39,7 @@ func TestLexer(t *testing.T) {
 			{token.ASSIGN, ":="},
 			{token.INT, "3"},
 			{token.SEMICOLON, ";"},
+            {token.EOF, ""},
 		}
 
 		LexAssert(t,input,tests)
@@ -70,6 +71,8 @@ func TestLexer(t *testing.T) {
 			{token.PLUS, "+"},
 			{token.IDENTIFIER, "y"},
 			{token.SEMICOLON, ";"},
+            {token.RBRACE, "}"},
+            {token.EOF, ""},
 		}
 
 		LexAssert(t,input,tests)
@@ -88,6 +91,8 @@ func TestLexer(t *testing.T) {
 		     {token.ASTERISK, "*"},
 		     {token.INT, "4"},
 		     {token.MINUS, "-"},
+             {token.SEMICOLON, ";"},
+             {token.EOF, ""},
 		}
 		
 		LexAssert(t, input, want)
