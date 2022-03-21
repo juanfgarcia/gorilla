@@ -89,20 +89,21 @@ func startState(lex *Lexer) LexState {
 
 
 	switch ch {
-	case 0 : {
-	     lex.emit(token.EOF)
-	     return nil
-	}
+	case 0:
+		{
+			lex.emit(token.EOF)
+			return nil
+		}
 	case '(':
-	     lex.emit(token.LPAREN)
+		lex.emit(token.LPAREN)
 	case ')':
-	     lex.emit(token.RPAREN)
+		lex.emit(token.RPAREN)
 	case '{':
-	     lex.emit(token.LBRACE)
+		lex.emit(token.LBRACE)
 	case '}':
-	     lex.emit(token.RBRACE)
+		lex.emit(token.RBRACE)
 	case ',':
-	     lex.emit(token.COMMA)
+		lex.emit(token.COMMA)
 	case ';':
 	     lex.emit(token.SEMICOLON)
     case '=' : 
@@ -114,18 +115,22 @@ func startState(lex *Lexer) LexState {
 		    } else {
 			lex.emit(token.COLON)
 		    }
+        }
+	case '-':
+		{
+		if lex.peek() == '>' {
+				lex.read()
+				lex.emit(token.RIGHTARROW)
+			} else {
+				lex.emit(token.MINUS)
+			}
 		}
-	case '-': {
-	     if lex.peek() == '>' {
-	     	lex.read()
-		lex.emit(token.RIGHTARROW)
-	    } else {
-	      lex.emit(token.MINUS)
-	    }
-	}
-	case '+': lex.emit(token.PLUS)
-	case '/': lex.emit(token.SLASH)
-	case '*': lex.emit(token.ASTERISK)
+	case '+':
+		lex.emit(token.PLUS)
+	case '/':
+		lex.emit(token.SLASH)
+	case '*':
+		lex.emit(token.ASTERISK)
 	default:
 		{
 			if isLetter(ch) {
