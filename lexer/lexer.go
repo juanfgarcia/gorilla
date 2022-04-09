@@ -92,19 +92,19 @@ func startState(lex *Lexer) LexState {
 			lex.emit(token.EOF)
 			return nil
 		}
-    case '!':
-        {
-            if lex.peek() == '=' {
-                lex.read()
-                lex.emit(token.NEQUALS)
-            } else {
-                lex.emit(token.BANG)
-            }
-        }
-    case '>':
-        lex.emit(token.LT)
-    case '<':
-        lex.emit(token.GT)
+	case '!':
+		{
+			if lex.peek() == '=' {
+				lex.read()
+				lex.emit(token.NEQUALS)
+			} else {
+				lex.emit(token.BANG)
+			}
+		}
+	case '>':
+		lex.emit(token.LT)
+	case '<':
+		lex.emit(token.GT)
 	case '(':
 		lex.emit(token.LPAREN)
 	case ')':
@@ -118,14 +118,14 @@ func startState(lex *Lexer) LexState {
 	case ';':
 		lex.emit(token.SEMICOLON)
 	case '=':
-        {
-            if lex.peek() == '=' {
-                lex.read()
-                lex.emit(token.EQUALS)
-            } else {
-                lex.emit(token.ASSIGN)
-            }
-        }
+		{
+			if lex.peek() == '=' {
+				lex.read()
+				lex.emit(token.EQUALS)
+			} else {
+				lex.emit(token.ASSIGN)
+			}
+		}
 	case ':':
 		{
 			if lex.peek() == '=' {
