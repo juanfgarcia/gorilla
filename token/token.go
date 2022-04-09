@@ -14,15 +14,21 @@ const (
 	// Identifiers
 	IDENTIFIER
 	INT
+    TRUE
+    FALSE
 
 	// Operators
 	ASSIGN
 	EQUALS
+    NEQUALS
 	PLUS
 	MINUS
 	ASTERISK
 	RIGHTARROW
 	SLASH
+    BANG
+    LT
+    GT
 
 	// Delimiters
 	COMMA
@@ -39,6 +45,8 @@ const (
 	LET
 	FUNCTION
 	RETURN
+	IF
+	ELSE
 )
 
 func (t TokenType) String() string {
@@ -47,13 +55,19 @@ func (t TokenType) String() string {
 		"EOF",
 		"IDENTIFIER",
 		"INT",
+        "TRUE",
+        "FALSE",
 		"ASSIGN",
 		"EQUALS",
+        "NEQUALS",
 		"PLUS",
 		"MINUS",
 		"ASTERISK",
 		"RIGHTARROW",
 		"SLASH",
+        "BANG",
+        "LT",
+        "GT",
 		"COMMA",
 		"COLON",
 		"SEMICOLON",
@@ -64,7 +78,9 @@ func (t TokenType) String() string {
 		"TYPE",
 		"LET",
 		"FUNCTION",
-		"RETURN"}[t]
+		"RETURN",
+		"IF",
+		"ELSE"}[t]
 }
 
 var keywords = map[string]TokenType{
@@ -72,6 +88,10 @@ var keywords = map[string]TokenType{
 	"fn":     FUNCTION,
 	"return": RETURN,
 	"Int":    TYPE,
+    "true":   TRUE,
+    "false":  FALSE,
+	"if":	  IF,
+	"else":	  ELSE,
 }
 
 func LookupIdent(ident string) TokenType {
